@@ -34,7 +34,7 @@ Welcome to the **Blog Application**! This is a full-stack project built with **S
 ### 1. **Clone the repository**
 
 ```bash
-git clone [https://github.com/your-username/blog-application.git](https://github.com/AnirudhSharma777/Blogging-Application.git)
+git clone https://github.com/AnirudhSharma777/Blogging-Application.git
 cd blog-application
 ```
 
@@ -194,7 +194,7 @@ This project is licensed under the MIT License — feel free to use, modify, and
 
 ## 📧 Contact
 
-For any questions or feedback, reach out via [your-email@example.com](mailto:anirudhsharma857000@gmail.com).
+For any questions or feedback, reach out via [anirudhsharma857000@gmail.com](mailto:anirudhsharma857000@gmail.com).
 
 ---
 
