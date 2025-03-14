@@ -1,0 +1,443 @@
+{
+	"info": {
+		"_postman_id": "f3da9643-a2ae-4e93-b6a7-1c9b2e3ff5ab",
+		"name": "Blog Application",
+		"description": "**Blog Application** is a project building with **Spring Boot** and **PostgreSQL**.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26813872"
+	},
+	"item": [
+		{
+			"name": "AuthControllers",
+			"item": [
+				{
+					"name": "RegisterUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Joey\",\r\n    \"email\":\"anirudhsharma857000@gmail.com\",\r\n    \"password\":\"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AccountVerification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"anirudhsharma857000@gmail.com\",\r\n    \"verificationcode\":\"935203\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/auth/verify",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"anirudhsharma857000@gmail.com\",\r\n    \"password\":\"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ResendVerificationCode",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"anirudhsharma857000@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/auth/resend",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"resend"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "The **Auth Controller** handles user authentication and authorization. It usually provides endpoints for:\n\n- **User login** (to get authenticated)\n    \n- **User registration** (to create new accounts)\n    \n- **Account Verification** (to get verified)\n    \n- **Resend Verification Code** (like Resend the code when verification code is expired)"
+		},
+		{
+			"name": "BlogControllers",
+			"item": [
+				{
+					"name": "CreateNewBlog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmlydWRoc2hhcm1hODU3MDAwQGdtYWlsLmNvbSIsImlhdCI6MTc0MTg2Njc5OSwiZXhwIjoxNzQxODcwMzk5fQ._T3XhbqpXClbZrp8FUBZ-AjtTrE-mS2WJ4TRkAs16HQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"title\": \"Building Scalable Microservices with Spring Boot\",\r\n        \"content\": \"A tutorial on how to design and build scalable microservices using Spring Boot, Docker, and Kubernetes.\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/blog",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"blog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteBlogById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmlydWRoc2hhcm1hODU3MDAwQGdtYWlsLmNvbSIsImlhdCI6MTc0MTg2ODY5MywiZXhwIjoxNzQxODcyMjkzfQ.NYtm1rpN66ZyJ_OUnmYv1DXFKLgmNqMfhmh8SMIvqrM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/blog/97a28a75-9559-4adc-ab7d-19255de8ae7c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								"97a28a75-9559-4adc-ab7d-19255de8ae7c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateBlogById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmlydWRoc2hhcm1hODU3MDAwQGdtYWlsLmNvbSIsImlhdCI6MTc0MTg2OTQ4MiwiZXhwIjoxNzQxODczMDgyfQ.MkC61QXc1tI8qa-rnj3YHMoIFu8wBSEfmKaVIfTfNKY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Mastering Spring Boot Security\",\r\n    \"content\":\"An in-depth guide on how to implement authentication and authorization in a Spring Boot application, including role-based access control.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/blog/e26a3db5-c1a8-40b9-b867-49033a347d75",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								"e26a3db5-c1a8-40b9-b867-49033a347d75"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetBlogById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/blog/e26a3db5-c1a8-40b9-b867-49033a347d75",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								"e26a3db5-c1a8-40b9-b867-49033a347d75"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllBlog",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/blog",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"blog"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "A **Blog Controller** manages the CRUD (Create, Read, Update, Delete) operations for blog posts. Depending on your app’s design, some routes can be public (for viewing posts) while others may require authorization (like adding or deleting blogs)."
+		},
+		{
+			"name": "Public Controllers",
+			"item": [
+				{
+					"name": "GetBlogByPagination",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/public/blogs/pagination?page=1&size=4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"public",
+								"blogs",
+								"pagination"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**Public controller** typically contains endpoints that can be accessed by anyone — without requiring authentication or special permissions."
+		},
+		{
+			"name": "UserController",
+			"item": [
+				{
+					"name": "GetAuthorizedUserDetailByid",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmlydWRoc2hhcm1hODU3MDAwQGdtYWlsLmNvbSIsImlhdCI6MTc0MTg4NTU0NCwiZXhwIjoxNzQxODg5MTQ0fQ.5M8f5Bn_EQkGim99byxYxRZft3kfkswItiqxiGQUlvk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/user/63f10d35-4c39-48e9-8567-c2c2f49c9d16",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"63f10d35-4c39-48e9-8567-c2c2f49c9d16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUserAccount",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmlydWRoc2hhcm1hODU3MDAwQGdtYWlsLmNvbSIsImlhdCI6MTc0MTg4NDE1MCwiZXhwIjoxNzQxODg3NzUwfQ.Gu8di1Oa-vo6UQOC6ims1FGQkjXRed9TBqUli7poXrs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/user/63f10d35-4c39-48e9-8567-c2c2f49c9d16",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"63f10d35-4c39-48e9-8567-c2c2f49c9d16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetListOfAllPostedBlogsByUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmlydWRoc2hhcm1hODU3MDAwQGdtYWlsLmNvbSIsImlhdCI6MTc0MTg4Mzk1NSwiZXhwIjoxNzQxODg3NTU1fQ.RS8lW4AmIvSut_o4fSRMc9JjwTnm7Lzt2whLUtRx-3Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/v1/user/blogs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"blogs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

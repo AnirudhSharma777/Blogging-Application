@@ -1,0 +1,47 @@
+
+services:
+
+  db:
+    image: postgres
+    container_name: blogapplication-db-1
+    environment:
+      POSTGRES_USER: blog
+      POSTGRES_PASSWORD: blogDBPassword
+      POSTGRES_DB: blog
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U blog"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  
+  blog:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/blog?autoReconnect=true
+      - SPRING_DATASOURCE_USERNAME=blog
+      - SPRING_DATASOURCE_PASSWORD=blogDBPassword
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      db:
+        condition: service_healthy
+    # restart: always
+    networks:
+      - blog-networks
+
+
+volumes:
+  postgres-data:
+    driver: local
+
+networks:
+  blog-networks:
+    driver: bridge
