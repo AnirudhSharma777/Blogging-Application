@@ -1,4 +1,6 @@
 
+networks:
+  blog-networks:
 services:
 
   db:
@@ -12,6 +14,8 @@ services:
       - postgres-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    networks:
+      - blog-networks
     restart: always
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U blog"]
@@ -29,19 +33,18 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/blog?autoReconnect=true
       - SPRING_DATASOURCE_USERNAME=blog
       - SPRING_DATASOURCE_PASSWORD=blogDBPassword
-      - SEND_MAIL_USERNAME= 03anirudh2001@gmail.com 
-      - SEND_MAIL_PASSWORD= vjrf bwqz fnml lzha
+      - SEND_MAIL_USERNAME=03anirudh2001@gmail.com
+      - SEND_MAIL_PASSWORD=vjrf bwqz fnml lzha
     depends_on:
       db:
         condition: service_healthy
     # restart: always
-    # networks:
-    #   - blog-networks
+    networks:
+      - blog-networks
 
 
 volumes:
   postgres-data: {}
 
-# networks:
-#   blog-networks:
-#     driver: bridge
+
+    
