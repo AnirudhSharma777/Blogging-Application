@@ -1,0 +1,61 @@
+
+spring:
+    application:
+        name: blogapplication
+    
+
+    datasource:
+        url: ${SPRING_DATASOURCE_URL}
+        username: ${SPRING_DATASOURCE_USERNAME}
+        password: ${SPRING_DATASOURCE_PASSWORD}
+        driver-class-name: org.postgresql.Driver
+
+
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+      properties:
+        hibernate:
+          format_sql: true
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+
+    mail:
+        host: smtp.gmail.com
+        port: 587
+        username: ${SEND_MAIL_USERNAME}
+        password: ${SEND_MAIL_PASSWORD}
+        properties:
+            mail:
+                smtp:
+                  auth: true
+                  starttls:
+                    enable: true
+    config:
+        import:
+            - optional:file:.env[.properties]
+
+server:
+  port: 8081
+
+security:
+    jwt:
+      secret-key: f6cad8f865c20b3b28d96e6ac4491c62e84853e811cae188fd56f2a6b4868f22f4bf46324b3dc197c841658775ee4d3ba1ea75c7f943924f855a41bff3bfd3d0f3634edff23b2ad3885b87d3cb083a43a75276f26b74b84725209f4804113d2264b8f2a504c8064e7a44d2943592be1fe74d0682667159a60465c64d5e802eb9c8d98637f5d9092a205f39e8142a647a41d619130daed12cba1d89ce0f2a8c16fe5d0c5b63935aa75b55d3300d2d6b11e57cf9dc6ab9613322b39c82aab09256fbc1b785d396255741a7e92a106ff3d83d2bfcd215c2a3c2f88caa30e9a9dd863139ae67b5c68dda3666d109579edfa370ac844a5bad45c62419b60a30495a30
+      expiration: 3600000
+
+# spring.config.import=optional:file:.env[.properties]
+
+
+
+
+
+# PostgreSQL database connection settings
+
+# spring.datasource.url=${SPRING_DATASOURCE_URL}
+# spring.datasource.username=${SPRING_DATASOURCE_USERNAME}
+# spring.datasource.password=${SPRING_DATASOURCE_PASSWORD}
+# spring.jpa.hibernate.ddl-auto= update
+# spring.datasource.driver-class-name=org.postgresql.Driver
+# spring.jpa.show-sql=true
+# spring.jpa.properties.hibernate.format_sql=true
+# spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect

@@ -1,6 +1,7 @@
 
 networks:
   blog-networks:
+    driver: bridge
 services:
 
   db:
